@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Explorer</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="intro-locked">
+    <script>
+        if (["#destinations-nav", "#destinazioni", "#capitali"].includes(window.location.hash)) {
+            document.body.classList.add("adventure-complete");
+        }
+    </script>
+    <script src="assets/js/theme.js"></script>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="inizio">
+            <div class="hero-art">
+                <img class="hero-image" src="assets/images/general/Designer.jpeg" alt="Banner Travel Explorer con destinazioni e paesaggi">
+                <button class="hero-cta" id="start-adventure" type="button"
+                    aria-label="Inizia la tua avventura e vai alle destinazioni"></button>
+            </div>
+        </section>
+
+        <nav class="site-nav" id="destinations-nav" aria-label="Navigazione destinazioni" inert>
+            <a class="nav-brand" href="#destinazioni">Travel Explorer</a>
+
+            <label class="search-box">
+                <span class="visually-hidden">Cerca una destinazione</span>
+                <input id="destination-search" type="search" placeholder="Cerca una destinazione..."
+                    autocomplete="off">
+                <span aria-hidden="true">⌕</span>
+            </label>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" type="button" aria-label="Cambia tema">🌙</button>
+                <a class="trips-link" href="itinerari.html">I miei viaggi</a>
+                <button class="profile-button" id="profile-button" type="button">👤 <span>Accedi</span></button>
+            </div>
+        </nav>
+
+        <!-- CONTINENTI -->
+        <section class="continenti-section" id="destinazioni" inert>
+
+            <div class="carousel">
+                <button class="arrow" id="prev-card" aria-label="Destinazioni precedenti">&#10094;</button>
+
+                <div class="continenti-container" id="countries-container">
+
+                    <a class="continente-card country-card" href="stati/italia.html" aria-label="Scopri Italia">
+                        <img src="assets/stati-image/italia/italia.png" alt="Italia">
+                        <h2>Italia</h2>
+                        <p>Arte, borghi, montagne e cucina regionale, dalle Alpi al Mediterraneo.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/francia.html" aria-label="Scopri Francia">
+                        <img src="assets/stati-image/francia/francia.jpg" alt="Francia">
+                        <h2>Francia</h2>
+                        <p>Grandi musei, paesaggi diversi e tradizioni gastronomiche tutte da scoprire.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/spagna.html" aria-label="Scopri Spagna">
+                        <img src="assets/stati-image/spagna/spagna.webp" alt="Spagna">
+                        <h2>Spagna</h2>
+                        <p>Città vivaci, architetture sorprendenti e coste affacciate su più mari.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/giappone.html" aria-label="Scopri Giappone">
+                        <img src="assets/stati-image/giappone/giappone.jpg" alt="Giappone">
+                        <h2>Giappone</h2>
+                        <p>Templi, quartieri contemporanei e paesaggi che cambiano con le stagioni.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/grecia.html" aria-label="Scopri Grecia">
+                        <img src="assets/stati-image/grecia/grecia.jpg" alt="Grecia">
+                        <h2>Grecia</h2>
+                        <p>Siti antichi, isole e villaggi dove il mare è sempre vicino.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/stati-uniti.html" aria-label="Scopri Stati Uniti">
+                        <img src="assets/stati-image/stati-uniti/statiuniti.webp" alt="Stati Uniti">
+                        <h2>Stati Uniti</h2>
+                        <p>Metropoli, parchi naturali e itinerari che attraversano paesaggi immensi.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/egitto.html" aria-label="Scopri Egitto">
+                        <img src="assets/stati-image/egitto/egitto.webp" alt="Egitto">
+                        <h2>Egitto</h2>
+                        <p>Monumenti millenari, mercati e la vita che si sviluppa lungo il Nilo.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/thailandia.html" aria-label="Scopri Thailandia">
+                        <img src="assets/stati-image/thailandia/thailandia.jpg" alt="Thailandia">
+                        <h2>Thailandia</h2>
+                        <p>Templi, cucina profumata e spiagge tropicali da esplorare con calma.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/brasile.html" aria-label="Scopri Brasile">
+                        <img src="assets/stati-image/brasile/brasile.jpg" alt="Brasile">
+                        <h2>Brasile</h2>
+                        <p>Musica, foreste, grandi città e una straordinaria varietà di ecosistemi.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/australia.html" aria-label="Scopri Australia">
+                        <img src="assets/stati-image/australia/australia.jpg" alt="Australia">
+                        <h2>Australia</h2>
+                        <p>Grandi spazi, città costiere e una natura unica da rispettare e conoscere.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/kenya.html" aria-label="Scopri Kenya">
+                        <img src="assets/stati-image/kenya/kenya.jpg" alt="Kenya">
+                        <h2>Kenya</h2>
+                        <p>Savane, riserve naturali e coste dell'Oceano Indiano ricche di vita.</p>
+                    </a>
+
+                    <a class="continente-card country-card" href="stati/maldive.html" aria-label="Scopri Maldive">
+                        <img src="assets/stati-image/maldive/maldive.jpg" alt="Maldive">
+                        <h2>Maldive</h2>
+                        <p>Atolli corallini e lagune: un viaggio da vivere con attenzione all'ambiente.</p>
+                    </a>
+                </div>
+
+                <button class="arrow" id="next-card" aria-label="Destinazioni successive">&#10095;</button>
+            </div>
+            <p class="no-results" id="no-results" role="status" hidden>Nessuna destinazione trovata.</p>
+
+            <section class="capitals-section" id="capitali" aria-labelledby="capitals-title">
+                <h2 id="capitals-title">Le capitali</h2>
+                <div class="carousel">
+                    <button class="arrow" id="prev-capital" aria-label="Capitali precedenti">&#10094;</button>
+
+                    <div class="continenti-container" id="capitals-container">
+                        <a class="continente-card capitale-card" href="destinazioni/roma.html" data-search="italia roma"
+                            aria-label="Scopri Roma">
+                            <img src="assets/images/capitali/roma.jpg" alt="Panorama di Roma">
+                            <h3>Roma</h3>
+                            <p><strong>Italia</strong> · Circa 2,75 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/parigi.html" data-search="francia parigi"
+                            aria-label="Scopri Parigi">
+                            <img src="assets/images/capitali/parigi.jpg" alt="Panorama di Parigi">
+                            <h3>Parigi</h3>
+                            <p><strong>Francia</strong> · Circa 2,10 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/madrid.html" data-search="spagna madrid"
+                            aria-label="Scopri Madrid">
+                            <img src="assets/images/capitali/madrid.webp" alt="Panorama di Madrid">
+                            <h3>Madrid</h3>
+                            <p><strong>Spagna</strong> · Circa 3,30 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/tokyo.html" data-search="giappone tokyo"
+                            aria-label="Scopri Tokyo">
+                            <img src="assets/images/capitali/tokyo.avif" alt="Panorama di Tokyo">
+                            <h3>Tokyo</h3>
+                            <p><strong>Giappone</strong> · Circa 14,00 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/atene.html" data-search="grecia atene"
+                            aria-label="Scopri Atene">
+                            <img src="assets/images/capitali/atene.jpg" alt="Panorama di Atene">
+                            <h3>Atene</h3>
+                            <p><strong>Grecia</strong> · Circa 665 mila abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/washingtondc.html" data-search="stati uniti washington"
+                            aria-label="Scopri Washington, D.C.">
+                            <img src="assets/images/capitali/washington.avif" alt="Panorama di Washington">
+                            <h3>Washington, D.C.</h3>
+                            <p><strong>Stati Uniti</strong> · Circa 700 mila abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/ilcairo.html" data-search="egitto cairo"
+                            aria-label="Scopri Il Cairo">
+                            <img src="assets/images/capitali/cairo.webp" alt="Panorama del Cairo">
+                            <h3>Il Cairo</h3>
+                            <p><strong>Egitto</strong> · Circa 10,10 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/bangkok.html" data-search="thailandia bangkok"
+                            aria-label="Scopri Bangkok">
+                            <img src="assets/images/capitali/bankok.jpg" alt="Panorama di Bangkok">
+                            <h3>Bangkok</h3>
+                            <p><strong>Thailandia</strong> · Circa 5,50 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/brasilia.html" data-search="brasile brasilia"
+                            aria-label="Scopri Brasilia">
+                            <img src="assets/images/capitali/brasilia.jpg" alt="Panorama di Brasilia">
+                            <h3>Brasilia</h3>
+                            <p><strong>Brasile</strong> · Circa 2,80 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/canberra.html" data-search="australia canberra"
+                            aria-label="Scopri Canberra">
+                            <img src="assets/images/capitali/canberra.webp" alt="Panorama di Canberra">
+                            <h3>Canberra</h3>
+                            <p><strong>Australia</strong> · Circa 470 mila abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/nairobi.html" data-search="kenya nairobi"
+                            aria-label="Scopri Nairobi">
+                            <img src="assets/images/capitali/nairobi.jpg" alt="Panorama di Nairobi">
+                            <h3>Nairobi</h3>
+                            <p><strong>Kenya</strong> · Circa 4,40 milioni di abitanti</p>
+                        </a>
+                        <a class="continente-card capitale-card" href="destinazioni/male.html" data-search="maldive male"
+                            aria-label="Scopri Malé">
+                            <img src="assets/images/capitali/male.jpg" alt="Panorama di Malé">
+                            <h3>Malé</h3>
+                            <p><strong>Maldive</strong> · Circa 210 mila abitanti</p>
+                        </a>
+                    </div>
+
+                    <button class="arrow" id="next-capital" aria-label="Capitali successive">&#10095;</button>
+                </div>
+                <p class="population-note">Popolazioni indicative e arrotondate; i dati possono variare in base ai confini amministrativi e all'anno della stima.</p>
+            </section>
+
+        </section>
+
+        <section class="travel-content" aria-label="Idee e consigli di viaggio">
+            <section class="content-section" aria-labelledby="experiences-title">
+                <div class="section-heading">
+                    <p class="section-kicker">Vivi il luogo</p>
+                    <h2 id="experiences-title">Esperienze da non perdere</h2>
+                    <p>Piccole idee per andare oltre la lista dei monumenti e conoscere meglio una destinazione.</p>
+                </div>
+                <ul class="experience-list">
+                    <li><strong>Assaggia qualcosa di locale:</strong> scegli un mercato o una trattoria frequentata da chi vive in città, chiedendo ingredienti e specialità del posto.</li>
+                    <li><strong>Esplora a piedi:</strong> dedica qualche ora a un quartiere senza una tabella di marcia serrata, rispettando gli spazi privati e le regole locali.</li>
+                    <li><strong>Partecipa a un'attività culturale:</strong> cerca una visita guidata, un laboratorio o un evento organizzato da realtà locali.</li>
+                    <li><strong>Esci dai percorsi più battuti:</strong> un parco, un museo meno conosciuto o un'escursione possono completare la visita ai luoghi più celebri.</li>
+                </ul>
+            </section>
+
+            <section class="content-section" aria-labelledby="seasons-title">
+                <div class="section-heading">
+                    <p class="section-kicker">Scegli il momento</p>
+                    <h2 id="seasons-title">Dove andare durante l'anno</h2>
+                    <p>Indicazioni generali: clima ed eventi cambiano da una regione all'altra, quindi controlla le previsioni prima di prenotare.</p>
+                </div>
+                <div class="content-grid season-grid">
+                    <article class="content-card text-card">
+                        <h3>Primavera</h3>
+                        <p>Roma e Parigi sono piacevoli per passeggiare prima del caldo estivo; in Giappone la fioritura varia ogni anno e non è garantita in date precise.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Estate</h3>
+                        <p>Grecia e Maldive invitano a giornate di mare, ma valuta caldo, affollamento e condizioni stagionali locali prima di organizzare le attività.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Autunno</h3>
+                        <p>Tokyo e le città italiane offrono occasioni per esplorare a piedi con temperature spesso più miti; verifica le condizioni del periodo scelto.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Inverno</h3>
+                        <p>Egitto e Thailandia possono essere alternative per chi cerca temperature più calde: controlla le differenze climatiche tra le regioni e la stagione delle piogge.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section" aria-labelledby="culture-title">
+                <div class="section-heading">
+                    <p class="section-kicker">Viaggiare con curiosità</p>
+                    <h2 id="culture-title">Piccole curiosità culturali</h2>
+                </div>
+                <div class="content-grid culture-grid">
+                    <article class="content-card text-card">
+                        <h3>Il caffè in Italia</h3>
+                        <p>Il caffè al banco è spesso una pausa breve e quotidiana; nomi e abitudini cambiano da regione a regione.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>La rete urbana in Giappone</h3>
+                        <p>Treni e metropolitane sono centrali nella vita cittadina: osservare la segnaletica e le indicazioni locali aiuta a orientarsi.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>I pasti in Spagna</h3>
+                        <p>In molte zone gli orari dei pasti sono più tardi rispetto a quelli italiani, ma variano secondo città, stagione e abitudini personali.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Mercati e contrattazione</h3>
+                        <p>Nei mercati di alcuni paesi la contrattazione può far parte dello scambio, ma non è una regola universale: osserva il contesto e chiedi con cortesia.</p>
+                    </article>
+                </div>
+                <p class="content-note">Le usanze non sono uguali per tutti: considera queste note come spunti per informarti, non come regole applicabili a ogni persona o luogo.</p>
+            </section>
+
+            <section class="content-section" aria-labelledby="planning-title">
+                <div class="section-heading">
+                    <p class="section-kicker">Prima di partire</p>
+                    <h2 id="planning-title">Consigli pratici per organizzarti</h2>
+                </div>
+                <div class="content-grid planning-grid">
+                    <article class="content-card text-card">
+                        <h3>Budget</h3>
+                        <p>Stabilisci una spesa giornaliera per alloggio, pasti, trasporti e ingressi. Una stima essenziale può partire da circa 60–100 € al giorno, una fascia media da 120–220 €; comfort, città costose e alta stagione possono superare i 250 €. Sono importi orientativi a persona, senza voli: verifica i prezzi aggiornati della meta.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Trasporti</h3>
+                        <p>Confronta trasporto pubblico, pass turistici e trasferimenti dall'aeroporto. Per gli spostamenti tra città prenota in anticipo quando conviene e considera i tempi reali di viaggio.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Clima e valigia</h3>
+                        <p>Controlla le previsioni a ridosso della partenza. Porta scarpe comode, strati leggeri da combinare, protezione da sole o pioggia e un adattatore compatibile con la destinazione.</p>
+                    </article>
+                    <article class="content-card text-card">
+                        <h3>Documenti e rispetto</h3>
+                        <p>Verifica passaporto, eventuali visti, copertura sanitaria e avvisi di viaggio sulle fonti ufficiali. Informati su norme locali, abbigliamento richiesto nei luoghi di culto e comportamenti da evitare.</p>
+                    </article>
+                </div>
+                <p class="content-note">Costi, requisiti d'ingresso e condizioni di viaggio possono cambiare: controlla sempre le informazioni ufficiali prima della partenza.</p>
+            </section>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="#inizio">Travel Explorer</a>
+                <p>Idee e ispirazione per il tuo prossimo viaggio.</p>
+            </div>
+
+            <div class="footer-tip">
+                <h2>Prima di partire</h2>
+                <p>Controlla documenti, meteo e usanze locali: il viaggio migliore inizia con una buona preparazione.</p>
+            </div>
+
+            <nav class="footer-links" aria-label="Collegamenti del footer">
+                <button class="footer-profile" id="footer-profile" type="button">Il tuo profilo</button>
+                <a href="assistenza.html">FAQ e assistenza</a>
+                <a href="#destinations-nav" id="back-to-nav">Torna all'inizio ↑</a>
+            </nav>
+        </div>
+        <p class="footer-copyright">© <span id="current-year"></span> Travel Explorer · Buon viaggio!</p>
+    </footer>
+
+    <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="profile-title">
+        <button class="dialog-close" id="close-profile" type="button" aria-label="Chiudi">×</button>
+        <h2 id="profile-title">Accedi al profilo</h2>
+        <p class="demo-notice">La tua prossima avventura comincia qui.</p>
+
+        <form id="login-form">
+            <label for="login-name">Nome</label>
+            <input id="login-name" name="name" type="text" autocomplete="name">
+
+            <label for="login-email">Email</label>
+            <input id="login-email" name="email" type="email" autocomplete="email" required>
+
+            <label for="login-password">Password</label>
+            <div class="password-input-wrap">
+                <input id="login-password" name="password" type="password" autocomplete="current-password" minlength="8" pattern="(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9\s]).{8,}" title="Usa almeno 8 caratteri, una maiuscola, un numero e un carattere speciale (anche il punto)." required>
+                <button class="password-toggle" type="button" aria-label="Mostra password" aria-pressed="false">
+                    <svg class="password-eye" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg class="password-eye-off" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 3 18 18M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.2A10.7 10.7 0 0 1 12 5c6.4 0 10 7 10 7a14.8 14.8 0 0 1-3.1 3.8M6.2 6.2C3.5 8 2 12 2 12s3.6 7 10 7a10.7 10.7 0 0 0 4.1-.8"/></svg>
+                </button>
+            </div>
+
+            <button class="login-submit" type="submit" name="auth-action" value="register">Registrati</button>
+            <button class="login-submit" type="submit" name="auth-action" value="login">Accedi</button>
+        </form>
+
+        <div id="profile-session" hidden>
+            <h3 id="profile-name"></h3>
+            <p id="login-message" role="status"></p>
+            <a class="profile-trips-link" href="itinerari.html">Gestisci i tuoi itinerari e gli acquisti</a>
+            <section class="visited-countries" aria-labelledby="visited-countries-title">
+                <h4 id="visited-countries-title">Paesi visitati <span id="visited-country-count" class="visited-country-count">0</span></h4>
+                <div id="visited-country-badges" class="visited-country-badges" aria-live="polite"></div>
+            </section>
+            <div class="profile-session-actions">
+                <button class="login-submit" id="confirm-profile" type="button">OK</button>
+                <button class="login-submit" id="logout-button" type="button">Esci</button>
+            </div>
+        </div>
+    </dialog>
+
+    
+
+    <script src="assets/js/scriptpagine.js"></script>
+</body>
+
+</html>

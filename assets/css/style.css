@@ -1,0 +1,1781 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --bg:#ffffff;
+    --text:#222;
+    --card:#f5f5f5;
+    --shadow:rgba(0,0,0,0.15);
+}
+
+body.dark{
+    --bg:#121212;
+    --text:#ffffff;
+    --card:#1f1f1f;
+    --shadow:rgba(255,255,255,0.1);
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:0.3s;
+}
+
+body.intro-locked{
+    overflow:hidden;
+}
+
+body.adventure-complete #inizio{
+    display:none;
+}
+
+/* NAVBAR */
+
+#theme-toggle{
+    border:none;
+    cursor:pointer;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    font-size:20px;
+    background:var(--card);
+    color:var(--text);
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.site-nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:grid;
+    grid-template-columns:1fr minmax(220px, 480px) 1fr;
+    align-items:center;
+    gap:24px;
+    min-height:76px;
+    padding:12px 30px;
+    background:var(--bg);
+    box-shadow:0 3px 14px var(--shadow);
+}
+
+.nav-brand{
+    color:var(--text);
+    font-size:1.2rem;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    height:44px;
+    padding:0 14px;
+    border:1px solid #aaa;
+    border-radius:24px;
+    background:var(--card);
+    color:var(--text);
+}
+
+.search-box input{
+    width:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:var(--text);
+    font-size:1rem;
+}
+
+.search-box span[aria-hidden="true"]{
+    font-size:1.5rem;
+}
+
+.nav-actions{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:12px;
+}
+
+.profile-button{
+    min-height:42px;
+    padding:0 16px;
+    border:0;
+    border-radius:22px;
+    background:#0d6efd;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+.visually-hidden{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0, 0, 0, 0);
+    white-space:nowrap;
+    border:0;
+}
+
+.profile-dialog{
+    position:fixed;
+    inset:0;
+    width:min(420px, calc(100% - 32px));
+    max-height:calc(100vh - 32px);
+    overflow:auto;
+    margin:auto;
+    padding:32px;
+    border:0;
+    border-radius:16px;
+    background:var(--bg);
+    color:var(--text);
+    box-shadow:0 12px 48px rgba(0,0,0,0.3);
+}
+
+.profile-dialog::backdrop{
+    background:rgba(0,0,0,0.55);
+}
+
+.profile-dialog h2{
+    margin:0 36px 12px 0;
+}
+
+.demo-notice{
+    margin-bottom:20px;
+    color:var(--text);
+    font-size:0.9rem;
+    line-height:1.5;
+}
+
+.dialog-close{
+    position:absolute;
+    top:12px;
+    right:16px;
+    border:0;
+    background:none;
+    color:var(--text);
+    font-size:1.8rem;
+    cursor:pointer;
+}
+
+#login-form{
+    display:grid;
+    gap:10px;
+}
+
+#login-form[hidden],
+#profile-session[hidden]{
+    display:none;
+}
+
+#login-form input{
+    width:100%;
+    min-height:42px;
+    margin-bottom:8px;
+    padding:8px 10px;
+    border:1px solid #aaa;
+    border-radius:8px;
+    background:var(--card);
+    color:var(--text);
+}
+
+.password-input-wrap{
+    position:relative;
+}
+
+.password-input-wrap input{
+    padding-right:48px !important;
+}
+
+.password-toggle{
+    position:absolute;
+    top:50%;
+    right:10px;
+    display:grid;
+    width:30px;
+    height:30px;
+    padding:4px;
+    place-items:center;
+    transform:translateY(-50%);
+    border:0;
+    background:transparent;
+    color:var(--text);
+    cursor:pointer;
+}
+
+.password-toggle svg{
+    width:20px;
+    height:20px;
+    fill:none;
+    stroke:currentColor;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:1.8;
+}
+
+.password-toggle .password-eye-off,
+.password-toggle[aria-pressed="true"] .password-eye{
+    display:none;
+}
+
+.password-toggle[aria-pressed="true"] .password-eye-off{
+    display:block;
+}
+
+#login-form .login-submit{
+    width:100%;
+}
+
+.login-submit{
+    min-height:44px;
+    padding:8px 16px;
+    border:0;
+    border-radius:8px;
+    background:#0d6efd;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+#profile-session p{
+    margin:12px 0 20px;
+    line-height:1.5;
+}
+
+.profile-session-actions{
+    display:flex;
+    gap:12px;
+}
+
+.profile-session-actions .login-submit{
+    flex:1;
+}
+
+.profile-trips-link{
+    display:inline-block;
+    margin:8px 0 18px;
+    color:#0d6efd;
+    font-weight:bold;
+}
+
+.visited-countries{
+    margin:0 0 20px;
+}
+
+.visited-countries h4{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+}
+
+.visited-country-count,
+.visited-country-badge{
+    display:inline-flex;
+    align-items:center;
+    min-height:28px;
+    padding:4px 10px;
+    border-radius:999px;
+    background:rgba(13,110,253,0.12);
+    color:#0d6efd;
+    font-size:0.85rem;
+    font-weight:bold;
+}
+
+.visited-country-badge{
+    gap:6px;
+}
+
+.visited-country-remove{
+    display:inline-grid;
+    width:18px;
+    height:18px;
+    padding:0;
+    place-items:center;
+    border:0;
+    border-radius:50%;
+    background:rgba(13,110,253,0.16);
+    color:inherit;
+    font-size:1rem;
+    line-height:1;
+    cursor:pointer;
+}
+
+.visited-country-remove:hover,
+.visited-country-remove:focus-visible{
+    background:rgba(13,110,253,0.3);
+}
+
+.visited-country-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.visited-countries-empty{
+    color:var(--text);
+    font-size:0.9rem;
+    opacity:0.75;
+}
+
+.remove-trip-button{
+    flex-shrink:0;
+    padding:7px 10px;
+    border:1px solid #c33;
+    border-radius:8px;
+    background:transparent;
+    color:#c33;
+    cursor:pointer;
+}
+
+.remove-trip-button:hover,
+.remove-trip-button:focus-visible{
+    background:#c33;
+    color:#fff;
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    height:100vh;
+    height:100svh;
+    position:relative;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:var(--bg);
+}
+
+.hero-art{
+    position:absolute;
+    inset:0;
+}
+
+.hero-image{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:fill;
+}
+
+.hero-cta{
+    position:absolute;
+    top:85%;
+    left:33.5%;
+    width:33%;
+    height:10%;
+    border:0;
+    border-radius:999px;
+    background:transparent;
+    cursor:pointer;
+}
+
+.hero-cta:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+}
+
+/* SEZIONE CONTINENTI */
+
+.continenti-section{
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+
+    gap:20px;
+
+    padding:80px 30px;
+}
+
+.capitals-section{
+    flex:1 0 100%;
+    width:100%;
+    margin-top:28px;
+}
+
+.capitals-section > h2{
+    margin-bottom:24px;
+    text-align:center;
+    font-size:2rem;
+}
+
+.carousel{
+    display:grid;
+    grid-template-columns:auto minmax(0, 1fr) auto;
+    align-items:center;
+    gap:16px;
+    flex:1;
+    min-width:0;
+}
+
+.continenti-container{
+
+    display:flex;
+    gap:30px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    min-width:0;
+}
+
+.continenti-container::-webkit-scrollbar{
+    display:none;
+}
+
+.continente-card[hidden]{
+    display:none;
+}
+
+.no-results{
+    flex:1 0 100%;
+    padding:24px 0;
+    text-align:center;
+}
+
+.continente-card{
+
+    flex:0 0 calc((100% - 60px) / 3);
+    min-width:0;
+
+    background:var(--card);
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 20px var(--shadow);
+
+    cursor:pointer;
+
+    transition:0.3s;
+    scroll-snap-align:start;
+}
+
+.capitale-card{
+    color:var(--text);
+    text-decoration:none;
+}
+
+.country-card{
+    color:var(--text);
+    text-decoration:none;
+}
+
+.country-card:focus-visible{
+    outline:3px solid #0d6efd;
+    outline-offset:4px;
+}
+
+.capitale-card:focus-visible{
+    outline:3px solid #0d6efd;
+    outline-offset:4px;
+}
+
+.continente-card:hover{
+
+    transform:translateY(-10px);
+}
+
+.continente-card img{
+
+    width:100%;
+    height:220px;
+
+    object-fit:cover;
+}
+
+.continente-card h2{
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.capitale-card h3{
+    padding:18px 12px 8px;
+    text-align:center;
+    font-size:1.35rem;
+}
+
+.capitale-card p{
+    padding:0 16px 20px;
+    text-align:center;
+    line-height:1.5;
+}
+
+.population-note{
+    margin-top:18px;
+    color:var(--text);
+    opacity:0.75;
+    font-size:0.9rem;
+    text-align:center;
+}
+
+.country-card h2{
+    padding:18px 16px 8px;
+}
+
+.country-card p{
+    padding:0 16px 20px;
+    text-align:center;
+    line-height:1.5;
+}
+
+.travel-content{
+    width:min(1200px, calc(100% - 60px));
+    margin:0 auto 80px;
+}
+
+.content-section{
+    margin-top:72px;
+}
+
+.section-heading{
+    max-width:760px;
+    margin:0 auto 28px;
+    text-align:center;
+}
+
+.section-heading h2{
+    margin-bottom:12px;
+    font-size:2rem;
+}
+
+.section-heading > p:last-child{
+    line-height:1.6;
+}
+
+.section-kicker{
+    margin-bottom:8px;
+    color:#0d6efd;
+    font-size:0.85rem;
+    font-weight:bold;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+}
+
+.content-grid{
+    display:grid;
+    gap:22px;
+}
+
+.season-grid{
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+}
+
+.culture-grid,
+.planning-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.content-card{
+    overflow:hidden;
+    border-radius:16px;
+    background:var(--card);
+    box-shadow:0 5px 20px var(--shadow);
+}
+
+.text-card{
+    padding:22px;
+}
+
+.itinerary-card{
+    display:flex;
+    flex-direction:column;
+}
+
+.itinerary-days{
+    display:grid;
+    gap:14px;
+    margin-top:10px;
+    padding:0;
+    list-style:none;
+}
+
+.itinerary-days li{
+    display:grid;
+    gap:4px;
+    padding-left:14px;
+    border-left:2px solid #0d6efd;
+}
+
+.itinerary-days li strong{
+    font-size:0.9rem;
+}
+
+.itinerary-days li span{
+    font-size:0.95rem;
+    line-height:1.55;
+}
+
+.content-card h3{
+    margin-bottom:12px;
+    font-size:1.2rem;
+}
+
+.content-card p{
+    margin-top:10px;
+    line-height:1.65;
+}
+
+.text-card a{
+    display:inline-block;
+    margin-top:16px;
+    color:var(--text);
+    font-weight:bold;
+    text-underline-offset:3px;
+}
+
+.itinerary-duration{
+    margin-top:0 !important;
+    color:#0d6efd;
+    font-size:0.85rem;
+    font-weight:bold;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+}
+
+.experience-list{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px 28px;
+    padding:0;
+    list-style:none;
+}
+
+.experience-list li{
+    padding:20px;
+    border-left:4px solid #0d6efd;
+    border-radius:0 12px 12px 0;
+    background:var(--card);
+    line-height:1.65;
+}
+
+.content-note{
+    margin-top:18px;
+    font-size:0.9rem;
+    line-height:1.55;
+    opacity:0.75;
+}
+
+.arrow{
+
+    border:none;
+
+    background:none;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    color:var(--text);
+}
+
+.arrow:disabled{
+    opacity:0.3;
+    cursor:default;
+}
+
+/* FOOTER */
+
+.site-footer{
+    padding:36px 30px 18px;
+    background:#123047;
+    color:#fff;
+}
+
+.footer-main{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.footer-brand a{
+    color:#fff;
+    font-size:1.25rem;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.footer-brand p{
+    margin-top:8px;
+    color:rgba(255,255,255,0.8);
+}
+
+.footer-tip{
+    max-width:440px;
+}
+
+.footer-tip h2{
+    margin-bottom:8px;
+    font-size:1rem;
+}
+
+.footer-tip p{
+    color:rgba(255,255,255,0.8);
+    line-height:1.5;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    align-items:center;
+}
+
+.footer-links a,
+.footer-profile{
+    color:#fff;
+    text-decoration:none;
+}
+
+.footer-profile{
+    padding:0;
+    border:0;
+    background:none;
+    font-size:inherit;
+    cursor:pointer;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.footer-profile:hover,
+.footer-profile:focus-visible{
+    text-decoration:underline;
+}
+
+.footer-copyright{
+    max-width:1200px;
+    margin:28px auto 0;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,0.25);
+    color:rgba(255,255,255,0.75);
+    font-size:0.9rem;
+    text-align:center;
+}
+
+/* PAGINA ROMA */
+
+.city-page{
+    min-height:100vh;
+}
+
+.city-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:18px max(24px, calc((100% - 1200px) / 2));
+    background:var(--bg);
+    box-shadow:0 3px 14px var(--shadow);
+}
+
+.city-brand{
+    color:var(--text);
+    font-size:1.2rem;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.city-back{
+    color:var(--text);
+    text-decoration:none;
+}
+
+.city-back:hover,
+.city-back:focus-visible{
+    text-decoration:underline;
+}
+
+.trips-link{
+    color:#0d6efd;
+    font-weight:bold;
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+.trips-link:hover,
+.trips-link:focus-visible{
+    text-decoration:underline;
+}
+
+.city-main{
+    width:min(1200px, calc(100% - 48px));
+    margin:32px auto 56px;
+}
+
+.trips-main{
+    max-width:1000px;
+}
+
+.trips-heading{
+    margin-bottom:28px;
+}
+
+.trips-heading .city-kicker{
+    margin-bottom:8px;
+    color:#0d6efd;
+    font-weight:bold;
+}
+
+.trips-heading h1{
+    margin-bottom:10px;
+    font-size:clamp(2rem, 5vw, 3rem);
+}
+
+.trips-heading > p:last-child{
+    line-height:1.6;
+}
+
+.trips-message{
+    min-height:1.5em;
+    margin:12px 0;
+    color:#0d6efd;
+}
+
+.trips-section{
+    margin:30px 0;
+}
+
+.trips-section > h2{
+    margin-bottom:16px;
+    font-size:1.6rem;
+}
+
+.trips-section-heading{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:16px;
+}
+
+.trips-section-heading h2{
+    margin:0;
+}
+
+.clear-history-button{
+    min-height:40px;
+}
+
+.saved-itineraries,
+.purchased-trips{
+    display:grid;
+    gap:18px;
+}
+
+.saved-itinerary-card,
+.purchase-card,
+.trips-login-prompt{
+    padding:22px;
+    border-radius:16px;
+    background:var(--card);
+    box-shadow:0 5px 20px var(--shadow);
+}
+
+.saved-itinerary-card h3,
+.purchase-card h3,
+.trips-login-prompt h2{
+    margin-bottom:12px;
+}
+
+.saved-itinerary-city{
+    display:inline-block;
+    margin-bottom:12px;
+    color:#0d6efd;
+    font-weight:bold;
+}
+
+.itinerary-controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    margin:8px 0 18px;
+}
+
+.itinerary-controls label{
+    display:grid;
+    gap:6px;
+    font-weight:bold;
+}
+
+.itinerary-controls select,
+.itinerary-controls input{
+    min-width:140px;
+    min-height:42px;
+    padding:8px 10px;
+    border:1px solid #999;
+    border-radius:8px;
+    background:var(--bg);
+    color:var(--text);
+    font:inherit;
+}
+
+.saved-itinerary-days{
+    display:grid;
+    gap:10px;
+    margin:0 0 16px;
+    padding-left:22px;
+    line-height:1.5;
+}
+
+.saved-itinerary-price{
+    margin-bottom:16px;
+    font-weight:bold;
+}
+
+.saved-itinerary-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+}
+
+.saved-itinerary-actions .login-submit,
+.saved-itinerary-actions .remove-trip-button{
+    min-height:42px;
+}
+
+.purchase-card{
+    border-left:4px solid #0d6efd;
+}
+
+.purchase-card p{
+    margin-top:8px;
+    line-height:1.5;
+}
+
+.purchase-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+}
+
+.purchase-actions .login-submit,
+.purchase-actions .remove-trip-button{
+    min-height:40px;
+}
+
+.purchase-date-label{
+    display:grid;
+    flex-basis:100%;
+    gap:6px;
+    font-weight:bold;
+}
+
+.purchase-date-label[hidden]{
+    display:none;
+}
+
+.purchase-date-label input{
+    width:min(100%, 260px);
+    min-height:42px;
+    padding:8px 10px;
+    border:1px solid #999;
+    border-radius:8px;
+    background:var(--bg);
+    color:var(--text);
+    font:inherit;
+}
+
+.trips-empty{
+    padding:16px;
+    border-radius:10px;
+    background:var(--card);
+    line-height:1.5;
+}
+
+.trips-login-prompt p{
+    margin-bottom:16px;
+    line-height:1.5;
+}
+
+.city-hero{
+    position:relative;
+    min-height:clamp(280px, 42vw, 520px);
+    overflow:hidden;
+    border-radius:20px;
+    background:#123047;
+}
+
+.city-hero img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.city-hero::after{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.05));
+    content:"";
+}
+
+.city-hero-overlay{
+    position:absolute;
+    z-index:1;
+    top:50%;
+    left:clamp(24px, 6vw, 72px);
+    max-width:540px;
+    transform:translateY(-50%);
+    color:#fff;
+}
+
+.city-kicker{
+    margin-bottom:12px;
+    font-weight:bold;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+}
+
+.city-hero h1{
+    margin-bottom:12px;
+    font-size:clamp(3rem, 8vw, 6rem);
+}
+
+.city-hero-overlay > p:last-child{
+    font-size:clamp(1rem, 2.4vw, 1.3rem);
+    line-height:1.5;
+}
+
+.city-content{
+    display:grid;
+    grid-template-columns:minmax(0, 2fr) minmax(240px, 1fr);
+    gap:32px;
+    margin-top:40px;
+}
+
+.city-intro h2,
+.city-facts h2,
+.city-highlights h2{
+    margin-bottom:16px;
+    font-size:1.6rem;
+}
+
+.city-intro p{
+    font-size:1.05rem;
+    line-height:1.8;
+}
+
+.city-facts{
+    padding:24px;
+    border-radius:16px;
+    background:var(--card);
+    box-shadow:0 5px 20px var(--shadow);
+}
+
+.city-facts dl{
+    display:grid;
+    gap:16px;
+}
+
+.city-facts dl div{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+}
+
+.city-facts dt{
+    font-weight:bold;
+}
+
+.city-facts dd{
+    text-align:right;
+}
+
+.city-highlights{
+    margin-top:40px;
+}
+
+.city-itinerary{
+    margin-top:40px;
+}
+
+.city-itinerary > h2{
+    margin-bottom:20px;
+    font-size:1.6rem;
+}
+
+.city-itinerary .itinerary-intro{
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.city-itinerary .itinerary-grid{
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    align-items:stretch;
+}
+
+.city-itinerary .itinerary-card{
+    min-width:0;
+}
+
+.itinerary-cost{
+    margin-top:auto !important;
+    padding-top:18px;
+    font-size:0.95rem;
+}
+
+.itinerary-save-button{
+    align-self:flex-start;
+    margin-top:16px;
+}
+
+.city-itinerary #save-trip-status{
+    margin-top:16px;
+}
+
+.save-trip{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px 18px;
+    margin-top:28px;
+}
+
+.save-trip-button{
+    min-height:46px;
+    padding:10px 20px;
+    border:0;
+    border-radius:24px;
+    background:#0d6efd;
+    color:#fff;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.save-trip-button:hover:not(:disabled),
+.save-trip-button:focus-visible{
+    background:#0a58ca;
+}
+
+.save-trip-button.is-saved{
+    background:#198754;
+}
+
+#save-trip-status{
+    line-height:1.5;
+}
+
+#save-trip-login{
+    color:inherit;
+    font-weight:bold;
+}
+
+#save-trip-login[hidden]{
+    display:none;
+}
+
+.monument-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:24px;
+}
+
+.monument-card{
+    overflow:hidden;
+    border-radius:16px;
+    background:var(--card);
+    box-shadow:0 5px 20px var(--shadow);
+    transition:transform 0.3s;
+}
+
+.monument-card:hover{
+    transform:translateY(-5px);
+}
+
+.monument-card img{
+    display:block;
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.monument-info{
+    padding:20px;
+}
+
+.monument-info h3{
+    margin-bottom:10px;
+    font-size:1.35rem;
+}
+
+.monument-info p{
+    line-height:1.6;
+}
+
+.monument-info .monument-credit{
+    margin-top:12px;
+    font-size:0.8rem;
+}
+
+.monument-credit a{
+    color:inherit;
+}
+
+.monument-year{
+    margin-top:14px;
+}
+
+.monument-note{
+    margin-top:16px;
+    opacity:0.75;
+    font-size:0.9rem;
+}
+
+.city-cta{
+    display:inline-block;
+    margin-top:36px;
+    padding:14px 22px;
+    border-radius:24px;
+    background:#0d6efd;
+    color:#fff;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.city-cta:hover,
+.city-cta:focus-visible{
+    background:#0a58ca;
+}
+
+.city-footer{
+    padding:22px;
+    background:#123047;
+    color:rgba(255,255,255,0.8);
+    text-align:center;
+}
+
+.city-footer a{
+    color:inherit;
+}
+
+.support-main{
+    max-width:860px;
+}
+
+.support-heading{
+    margin-bottom:32px;
+}
+
+.support-heading h1{
+    margin:8px 0 12px;
+}
+
+.support-heading > p:last-child,
+.support-section > p{
+    line-height:1.6;
+}
+
+.support-section{
+    margin-top:28px;
+    padding:28px;
+    border-radius:16px;
+    background:var(--card);
+    box-shadow:0 5px 20px var(--shadow);
+}
+
+.support-section h2{
+    margin-bottom:18px;
+}
+
+.support-faq{
+    padding:16px 0;
+    border-bottom:1px solid rgba(128,128,128,0.35);
+}
+
+.support-faq:last-child{
+    border-bottom:0;
+}
+
+.support-faq summary{
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.support-faq p{
+    margin-top:12px;
+    line-height:1.6;
+}
+
+.support-required-note{
+    margin-bottom:16px;
+    font-size:0.9rem;
+}
+
+.support-form label span{
+    color:#b42318;
+}
+
+.support-form{
+    display:grid;
+    gap:10px;
+}
+
+.support-form input,
+.support-form select,
+.support-form textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #888;
+    border-radius:8px;
+    background:var(--bg);
+    color:var(--text);
+    font-size:1rem;
+}
+
+.support-form textarea{
+    resize:vertical;
+}
+
+.support-form .login-submit{
+    justify-self:start;
+    margin-top:8px;
+}
+
+.support-status{
+    min-height:1.5em;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+    .continenti-section{
+        flex-direction:column;
+    }
+
+    .carousel{
+        width:100%;
+    }
+
+    .season-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media(max-width:700px){
+
+    .site-nav{
+        grid-template-columns:1fr;
+        gap:12px;
+        padding:12px 16px;
+    }
+
+    .nav-brand{
+        grid-column:1;
+        grid-row:1;
+    }
+
+    .nav-actions{
+        grid-column:1;
+        grid-row:2;
+        justify-content:space-between;
+    }
+
+    .search-box{
+        grid-column:1 / -1;
+        grid-row:3;
+    }
+
+    .continenti-section{
+        padding:50px 16px;
+    }
+
+    .travel-content{
+        width:calc(100% - 32px);
+        margin-bottom:56px;
+    }
+
+    .content-section{
+        margin-top:52px;
+    }
+
+    .section-heading h2{
+        font-size:1.6rem;
+    }
+
+    .season-grid,
+    .culture-grid,
+    .planning-grid,
+    .experience-list{
+        grid-template-columns:1fr;
+    }
+
+    .site-footer{
+        padding:30px 20px 16px;
+    }
+
+    .city-header{
+        padding:16px 20px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .city-main{
+        width:calc(100% - 32px);
+        margin:20px auto 40px;
+    }
+
+    .city-content{
+        grid-template-columns:1fr;
+        gap:24px;
+        margin-top:28px;
+    }
+
+    .city-highlights{
+        margin-top:28px;
+    }
+
+    .city-itinerary{
+        margin-top:28px;
+    }
+
+    .monument-grid{
+        grid-template-columns:1fr;
+    }
+
+    .monument-card img{
+        height:220px;
+    }
+
+    .footer-main{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .footer-links{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+    }
+
+    .capitals-section > h2{
+        font-size:1.6rem;
+    }
+
+    .carousel{
+        gap:8px;
+    }
+
+    .continenti-container{
+        gap:16px;
+    }
+
+    .continente-card{
+        flex-basis:calc((100% - 16px) / 2);
+    }
+
+}
+
+@media(max-width:480px){
+
+    .nav-brand{
+        font-size:1rem;
+    }
+
+    .profile-button{
+        padding:0 12px;
+    }
+
+    .continente-card{
+        flex-basis:100%;
+    }
+
+    .text-card{
+        padding:18px;
+    }
+
+}
+
+/* PAGINA ITALIA */
+
+.italy-section{
+    margin:40px 0;
+}
+
+.italy-section > h2{
+    margin-bottom:18px;
+    font-size:1.7rem;
+}
+
+.italy-city-list,
+.italy-food-list{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.italy-city-list{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    column-gap:40px;
+}
+
+.italy-city-list li{
+    display:grid;
+    grid-template-columns:minmax(110px, 160px) minmax(0, 1fr);
+    align-items:center;
+    gap:18px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(128,128,128,0.35);
+}
+
+.italy-city-list img{
+    display:block;
+    width:100%;
+    aspect-ratio:3 / 2;
+    object-fit:cover;
+}
+
+.italy-city-list h3{
+    margin-bottom:6px;
+    font-size:1.15rem;
+}
+
+.italy-city-list h3 a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.italy-city-list h3 a:hover,
+.italy-city-list h3 a:focus-visible{
+    text-decoration:underline;
+}
+
+.italy-city-list span,
+.italy-food-list p{
+    line-height:1.55;
+}
+
+.italy-food-list{
+    display:grid;
+    max-width:1080px;
+    margin:0 auto;
+}
+
+.italy-food-list li{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 200px;
+    align-items:center;
+    gap:32px;
+    min-height:196px;
+    padding:20px clamp(16px, 4vw, 40px);
+    border-bottom:1px solid rgba(128,128,128,0.35);
+}
+
+.italy-food-list li:nth-child(even){
+    grid-template-columns:200px minmax(0, 1fr);
+}
+
+.italy-food-list li:nth-child(even) img{
+    grid-column:1;
+    grid-row:1;
+}
+
+.italy-food-list li:nth-child(odd) img{
+    grid-column:2;
+    grid-row:1;
+}
+
+.italy-food-list li > div{
+    grid-row:1;
+}
+
+.italy-food-list li:nth-child(odd) > div{
+    grid-column:1;
+}
+
+.italy-food-list li:nth-child(even) > div{
+    grid-column:2;
+}
+
+.italy-food-list img{
+    display:block;
+    width:200px;
+    aspect-ratio:4 / 3;
+    border-radius:18px;
+    object-fit:cover;
+    box-shadow:0 6px 18px var(--shadow);
+}
+
+.italy-food-list h3{
+    margin-bottom:8px;
+    font-size:1.15rem;
+}
+
+.italy-food-list p{
+    line-height:1.55;
+}
+
+.italy-food-list h3 span{
+    color:#0d6efd;
+    font-size:0.95rem;
+    font-weight:normal;
+}
+
+.season-section > h2{
+    margin-bottom:10px;
+}
+
+.season-rating{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:0.78rem;
+    font-weight:bold;
+}
+
+.rating-perfect{
+    background:#d1e7dd;
+    color:#0f5132;
+}
+
+.rating-recommended{
+    background:#fff3cd;
+    color:#664d03;
+}
+
+.rating-not-recommended{
+    background:#f8d7da;
+    color:#842029;
+}
+
+.season-grid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:18px;
+}
+
+.season-card{
+    position:relative;
+    isolation:isolate;
+    min-height:270px;
+    overflow:hidden;
+    padding:22px 18px;
+    border-radius:18px;
+    background-position:center;
+    background-size:cover;
+    color:#fff;
+    box-shadow:0 6px 18px var(--shadow);
+}
+
+.season-card::before{
+    position:absolute;
+    z-index:-1;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+    content:"";
+}
+
+.season-winter{
+    background-image:url("../images/stagioni/inverno.jpg");
+}
+
+.season-spring{
+    background-image:url("../images/stagioni/primavera.jpg");
+}
+
+.season-summer{
+    background-image:url("../images/stagioni/estate.jpg");
+}
+
+.season-autumn{
+    background-image:url("../images/stagioni/autunno.jpg");
+}
+
+.season-card h3{
+    margin-bottom:18px;
+    font-size:1.35rem;
+    text-shadow:0 1px 4px rgba(0,0,0,0.8);
+}
+
+.season-card ul{
+    display:grid;
+    gap:12px;
+    list-style:none;
+}
+
+.season-card li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+}
+
+.season-card li > span:first-child{
+    text-shadow:0 1px 4px rgba(0,0,0,0.9);
+}
+
+@media(max-width:700px){
+    .italy-city-list,
+    .italy-food-list{
+        grid-template-columns:1fr;
+    }
+
+    .season-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
+    .italy-food-list li,
+    .italy-food-list li:nth-child(even){
+        grid-template-columns:minmax(0, 1fr) 120px;
+        gap:16px;
+        min-height:148px;
+        padding:16px 0;
+    }
+
+    .italy-food-list li:nth-child(even){
+        grid-template-columns:120px minmax(0, 1fr);
+    }
+
+    .italy-food-list img{
+        width:120px;
+        border-radius:14px;
+    }
+}
+
+@media(max-width:420px){
+    .italy-city-list li{
+        grid-template-columns:110px minmax(0, 1fr);
+        gap:14px;
+    }
+
+    .season-grid{
+        grid-template-columns:1fr;
+    }
+
+    .italy-food-list li,
+    .italy-food-list li:nth-child(even){
+        grid-template-columns:minmax(0, 1fr) 96px;
+        gap:12px;
+    }
+
+    .italy-food-list li:nth-child(even){
+        grid-template-columns:96px minmax(0, 1fr);
+    }
+
+    .italy-food-list img{
+        width:96px;
+        border-radius:12px;
+    }
+}

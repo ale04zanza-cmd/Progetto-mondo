@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consulta le risposte alle domande frequenti su Travel Explorer.">
+    <title>FAQ e assistenza - Travel Explorer</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="city-page">
+    <script src="assets/js/theme.js"></script>
+
+    <header class="city-header">
+        <a class="city-brand" href="index.html">Travel Explorer</a>
+        <a class="city-back" href="index.html#destinations-nav">← Torna alle destinazioni</a>
+        <button id="theme-toggle" type="button" aria-label="Cambia tema">🌙</button>
+    </header>
+
+    <main class="city-main support-main">
+        <header class="support-heading">
+            <p class="city-kicker">Siamo qui per aiutarti</p>
+            <h1>FAQ e assistenza</h1>
+            <p>Consulta le risposte alle domande più comuni su profilo, itinerari e destinazioni.</p>
+        </header>
+
+        <section class="support-section" aria-labelledby="faq-title">
+            <h2 id="faq-title">Domande frequenti</h2>
+            <details class="support-faq">
+                <summary>Come salvo un itinerario?</summary>
+                <p>Apri la pagina di una destinazione, scegli l'opzione per salvare l'itinerario e accedi al tuo profilo. Lo ritroverai nella sezione “I miei viaggi”.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Dove trovo i miei viaggi salvati?</summary>
+                <p>Seleziona “I miei viaggi” dal menu e accedi con lo stesso profilo usato per salvarli. I dati dimostrativi sono conservati nel browser.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Le informazioni di viaggio sono aggiornate?</summary>
+                <p>Le informazioni sono indicative. Prima di partire, verifica sempre requisiti, avvisi e condizioni sulle fonti ufficiali.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Come creo un profilo?</summary>
+                <p>Apri il pannello del profilo, inserisci email e password e scegli “Registrati”. Il profilo è una funzione dimostrativa, gestita nel browser.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Ho dimenticato la password: posso recuperarla?</summary>
+                <p>Il sito non prevede al momento una procedura di recupero password. I dati del profilo dimostrativo sono salvati solo nel browser in uso.</p>
+            </details>
+            <details class="support-faq">
+                <summary>I viaggi salvati sono visibili su altri dispositivi?</summary>
+                <p>No. Itinerari, acquisti e profilo dimostrativi sono conservati nel browser e non vengono sincronizzati con altri dispositivi.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Posso modificare o eliminare un itinerario salvato?</summary>
+                <p>Apri “I miei viaggi” dal profilo per gestire gli itinerari salvati e consultare lo storico disponibile.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Gli acquisti effettuano un pagamento?</summary>
+                <p>No. Le funzioni di acquisto sono dimostrative: non viene richiesto né addebitato alcun pagamento.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Come cerco una destinazione?</summary>
+                <p>Usa il campo di ricerca nella pagina iniziale. Puoi anche scorrere i caroselli di Paesi e capitali con le frecce.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Come cambio il tema chiaro o scuro?</summary>
+                <p>Seleziona il pulsante con l'icona della luna o del sole nella barra di navigazione. La preferenza viene salvata nel browser.</p>
+            </details>
+            <details class="support-faq">
+                <summary>Come posso verificare visti e requisiti d'ingresso?</summary>
+                <p>Consulta le fonti ufficiali del Paese di destinazione e gli avvisi di viaggio prima di partire: le indicazioni del sito sono generali e potrebbero non essere aggiornate.</p>
+            </details>
+        </section>
+
+        <section class="support-section" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contatta l'assistenza</h2>
+            <p class="support-required-note">Tutti i campi contrassegnati con * sono obbligatori.</p>
+            <form class="support-form" id="support-form">
+                <label for="support-name">Nome <span aria-hidden="true">*</span></label>
+                <input id="support-name" name="name" type="text" autocomplete="name" required>
+
+                <label for="support-email">Email <span aria-hidden="true">*</span></label>
+                <input id="support-email" name="email" type="email" autocomplete="email" required>
+
+                <label for="support-subject">Argomento <span aria-hidden="true">*</span></label>
+                <select id="support-subject" name="subject" required>
+                    <option value="">Seleziona un argomento</option>
+                    <option value="account">Profilo e accesso</option>
+                    <option value="itinerary">Itinerari e viaggi</option>
+                    <option value="destination">Informazioni sulle destinazioni</option>
+                    <option value="other">Altro</option>
+                </select>
+
+                <label for="support-message">Messaggio <span aria-hidden="true">*</span></label>
+                <textarea id="support-message" name="message" rows="6" required></textarea>
+
+                <button class="login-submit" type="submit">Invia richiesta</button>
+                <p class="support-status" id="support-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="city-footer">
+        <p>© <span id="support-year"></span> Travel Explorer · <a href="index.html">Torna alla home</a></p>
+    </footer>
+
+    <script>
+        document.getElementById("support-year").textContent = new Date().getFullYear();
+        document.getElementById("support-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            document.getElementById("support-status").textContent =
+                "La richiesta non è stata inviata: il servizio assistenza non è ancora attivo.";
+        });
+    </script>
+</body>
+
+</html>
